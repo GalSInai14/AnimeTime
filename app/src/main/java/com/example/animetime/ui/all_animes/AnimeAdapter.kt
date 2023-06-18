@@ -30,8 +30,8 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
             this.anime = item
             itemBinding.animecardTitle.text = item.title_english
             itemBinding.animecardDesc.text = item.synopsis
-//            Glide.with(itemBinding.root).load(item.images.jpg.image_url)
-//                .into(itemBinding.animecardImage)
+            Glide.with(itemBinding.root).load(item.images.jpg.large_image_url)
+                .into(itemBinding.animecardImage)
         }
 
         override fun onClick(v: View?) {

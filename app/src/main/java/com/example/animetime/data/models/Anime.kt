@@ -8,7 +8,7 @@ data class Anime(
     @PrimaryKey
     val mal_id: Int,
     val title_english: String,
-//    val images: Images,
+    val images: Images,
     val episodes: Int,
     val score: Double,
     val synopsis: String,
