@@ -33,14 +33,16 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
             val synopsis = item.synopsis
             val maxLength = 50
 
-            if (synopsis.length > maxLength) {
-                val trimmedSynopsis = synopsis.substring(0, maxLength) + "..."
-                itemBinding.animecardDesc.text = trimmedSynopsis
-            } else {
-                itemBinding.animecardDesc.text = synopsis
+            if (synopsis != null) {
+                if (synopsis.length > maxLength) {
+                    val trimmedSynopsis = synopsis.substring(0, maxLength) + "..."
+                    itemBinding.animecardDesc.text = trimmedSynopsis
+                } else {
+                    itemBinding.animecardDesc.text = synopsis
+                }
             }
 
-            Glide.with(itemBinding.root).load(item.images.jpg.image_url)
+            Glide.with(itemBinding.root).load(item.images?.jpg?.image_url ?: "")
                 .into(itemBinding.animecardImage)
         }
 
@@ -68,7 +70,7 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
     override fun getItemCount() = animes.size
 
     interface AnimeItemListener {
-        fun onAnimeClick(characterId: Int)
+        fun onAnimeClick(animeId: Int)
     }
 }
 

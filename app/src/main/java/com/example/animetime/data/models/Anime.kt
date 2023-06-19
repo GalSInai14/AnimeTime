@@ -6,17 +6,16 @@ import androidx.room.TypeConverters
 import com.example.animetime.local_db.ImagesTypeConverter
 
 @Entity(tableName = "animes")
-//@TypeConverters(ImagesTypeConverter::class)
 data class Anime(
     @PrimaryKey
     val mal_id: Int,
-    val title_english: String,
+    val title_english: String?,
     @TypeConverters(ImagesTypeConverter::class)
-    val images: Images,
-    val episodes: Int,
-    val score: Double,
-    val synopsis: String,
-    val year: Int
+    val images: Images?,
+    val episodes: Int?,
+    val score: Double?,
+    val synopsis: String?,
+    val year: Int?
 
 ) {
 }

@@ -8,12 +8,17 @@ class ImagesTypeConverter {
     private val gson = Gson()
 
     @TypeConverter
-    fun fromImages(images: Images): String {
+    fun fromImages(images: Images?): String {
         return gson.toJson(images)
     }
 
     @TypeConverter
-    fun toImages(imagesJson: String): Images {
-        return gson.fromJson(imagesJson, Images::class.java)
+    fun toImages(imagesJson: String): Images? {
+        return if (imagesJson.isEmpty()) {
+            null
+        } else {
+            gson.fromJson(imagesJson, Images::class.java)
+        }
     }
+
 }

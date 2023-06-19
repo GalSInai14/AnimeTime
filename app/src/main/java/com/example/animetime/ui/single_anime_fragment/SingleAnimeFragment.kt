@@ -60,7 +60,7 @@ class SingleAnimeFragment : Fragment() {
         binding.ratingAnime.text = anime.score.toString()
         binding.relYearAnimePage.text = anime.year.toString()
         binding.description.text = anime.synopsis
-        Glide.with(requireContext()).load(anime.images.jpg.image_url).into(binding.photo)
+        Glide.with(requireContext()).load(anime.images?.jpg?.image_url).into(binding.photo)
 
     }
 
