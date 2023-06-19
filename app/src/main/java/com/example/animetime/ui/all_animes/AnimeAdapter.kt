@@ -29,8 +29,18 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
 
             this.anime = item
             itemBinding.animecardTitle.text = item.title_english
-            itemBinding.animecardDesc.text = item.synopsis
-            Glide.with(itemBinding.root).load(item.images.jpg.large_image_url)
+
+            val synopsis = item.synopsis
+            val maxLength = 50
+
+            if (synopsis.length > maxLength) {
+                val trimmedSynopsis = synopsis.substring(0, maxLength) + "..."
+                itemBinding.animecardDesc.text = trimmedSynopsis
+            } else {
+                itemBinding.animecardDesc.text = synopsis
+            }
+
+            Glide.with(itemBinding.root).load(item.images.jpg.image_url)
                 .into(itemBinding.animecardImage)
         }
 

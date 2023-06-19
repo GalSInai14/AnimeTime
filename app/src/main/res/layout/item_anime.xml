@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/animecardImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
@@ -32,9 +32,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text=""
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="ggggg"
                 android:textColor="@color/imdb_yellow"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -43,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp" />
