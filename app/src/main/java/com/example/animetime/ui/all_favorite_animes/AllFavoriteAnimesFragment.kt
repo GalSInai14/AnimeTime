@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.animetime.R
 import com.example.animetime.databinding.FragmentAllFavoriteAnimesBinding
 import com.example.animetime.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,20 +41,17 @@ class AllFavoriteAnimesFragment : Fragment(),
         viewModel.favoriteAnimeList.observe(viewLifecycleOwner) { favoriteAnimeList ->
             adapter.submitList(favoriteAnimeList)
         }
-//            when (it.status) {
-//                is Loading -> Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_SHORT).show()
-//                is Success -> {
-//                    adapter.setAnimes(ArrayList(it.status.data))
-//                }
-//                is Error -> {
-//                    Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_SHORT).show()
-//                }
-//                else -> {}
-//            }
     }
 
     override fun onFavoriteAnimeClick(animeId: Int) {
-
+        val bundle = bundleOf(
+            "id" to animeId,
+            "arrivedFromFavorites" to true // Add this parameter
+        )
+        findNavController().navigate(
+            R.id.action_allFavoriteAnimesFragment_to_singleAnimeFragment,
+            bundle
+        )
     }
 }
 

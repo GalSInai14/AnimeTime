@@ -1,3 +1,5 @@
+// SingleAnimeFragment.kt
+
 package com.example.animetime.ui.single_anime_fragment
 
 import android.os.Bundle
@@ -6,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.animetime.R
 import com.example.animetime.data.local_db.AppDatabase
@@ -58,8 +62,15 @@ class SingleAnimeFragment : Fragment() {
             }
         }
 
-        arguments?.getInt("id")?.let {
-            viewModel.setId(it)
+        arguments?.getInt("id")?.let { animeId ->
+            viewModel.setId(animeId)
+
+            // Check if the fragment is arrived from the favorite page
+            val arrivedFromFavorites = arguments?.getBoolean("arrivedFromFavorites") ?: false
+            if (arrivedFromFavorites) {
+                // Hide the favorite icon
+                binding.FavouriteAnimeBtn.visibility = View.GONE
+            }
         }
 
         binding.FavouriteAnimeBtn.setOnClickListener(View.OnClickListener {
@@ -80,8 +91,6 @@ class SingleAnimeFragment : Fragment() {
     }
 
     private fun updateAnime(anime: Anime) {
-
-
         binding.title.text = anime.title_english
         binding.epNumberAnimePage.text = anime.episodes.toString()
         binding.ratingAnime.text = anime.score.toString()
@@ -148,8 +157,3 @@ class SingleAnimeFragment : Fragment() {
 fun <T> MutableLiveData<List<T>>.notifyObserver() {
     this.value = this.value
 }
-
-
-
-
-

@@ -102,5 +102,9 @@
         android:id="@+id/allFavoriteAnimesFragment"
         android:name="com.example.animetime.ui.all_favorite_animes.AllFavoriteAnimesFragment"
         android:label="fragment_all_favorite_animes"
-        tools:layout="@layout/fragment_all_favorite_animes" />
+        tools:layout="@layout/fragment_all_favorite_animes" >
+        <action
+            android:id="@+id/action_allFavoriteAnimesFragment_to_singleAnimeFragment"
+            app:destination="@id/singleAnimeFragment" />
+    </fragment>
 </navigation>
