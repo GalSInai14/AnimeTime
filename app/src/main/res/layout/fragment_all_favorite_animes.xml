@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDefault"
-    tools:context=".ui.all_mangas.AllMangasFragment">
+    tools:context=".ui.all_favorite_animes.AllFavoriteAnimesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/AllMangas_recycler"
+        android:id="@+id/AllFavoriteAnime_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

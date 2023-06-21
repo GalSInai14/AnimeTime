@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/imdb_grey"
+    app:cardBackgroundColor="@color/animeTimeCard"
     app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="10dp">
@@ -35,7 +35,7 @@
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:text="ggggg"
-                android:textColor="@color/imdb_yellow"
+                android:textColor="@color/animeTimeTitle"
                 android:textSize="22sp" />
 
 
@@ -47,7 +47,7 @@
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
                 android:text=""
-                android:textColor="@color/white"
+                android:textColor="@color/animeTimeRed"
                 android:textSize="16sp" />
 
 

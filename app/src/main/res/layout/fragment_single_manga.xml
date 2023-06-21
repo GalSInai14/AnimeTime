@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/backgroundDefault"
     tools:context=".ui.single_manga_fragment.SingleMangaFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/backgroundDefault"
         android:padding="30dp"
         tools:context=".ui.manga_page.PageFragment">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/imdb_grey"
+            android:backgroundTint="@color/animeTimeCard"
             app:cardCornerRadius="20dp">
 
             <LinearLayout
@@ -33,7 +33,7 @@
                     android:layout_margin="10dp"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:textColor="@color/imdb_yellow"
+                    android:textColor="@color/animeTimeTitle"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -84,7 +84,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="Status"
-                        android:textColor="@color/imdb_yellow"
+                        android:textStyle="bold"
+                        android:textColor="@color/animeTimeTitle"
                         android:textSize="20sp" />
 
                     <TextView
@@ -93,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="@string/_2017"
-                        android:textColor="@color/white"
+                        android:textColor="@color/animeTimeDetails"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
 
@@ -111,7 +112,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="@string/released_year"
-                        android:textColor="@color/imdb_yellow"
+                        android:textStyle="bold"
+                        android:textColor="@color/animeTimeTitle"
                         android:textSize="20sp" />
 
                     <TextView
@@ -120,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="@string/_2017"
-                        android:textColor="@color/white"
+                        android:textColor="@color/animeTimeDetails"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -138,7 +140,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="Number Of Volumes"
-                        android:textColor="@color/imdb_yellow"
+                        android:textStyle="bold"
+                        android:textColor="@color/animeTimeTitle"
                         android:textSize="20sp" />
 
                     <TextView
@@ -147,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="@string/_2017"
-                        android:textColor="@color/white"
+                        android:textColor="@color/animeTimeDetails"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
 
@@ -162,7 +165,7 @@
                     android:layout_marginBottom="72dp"
                     android:fontFamily="sans-serif"
                     android:gravity="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/animeTimeRed"
                     android:textSize="25sp" />
 
 

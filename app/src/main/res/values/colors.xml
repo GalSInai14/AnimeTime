@@ -13,4 +13,6 @@
     <color name="backgroundDefault">#F6F6F6</color>
     <color name="animeTimeRed">#E65454</color>
     <color name="animeTimeTitle">#DF4141</color>
+    <color name="animeTimeCard">#DDDDDD</color>
+    <color name="animeTimeDetails">#E46A6A</color>
 </resources>
