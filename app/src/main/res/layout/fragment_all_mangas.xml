@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundDefault"
-    tools:context=".ui.all_animes.AllAnimeFragment">
+    android:background="@color/black"
+    tools:context=".ui.all_mangas.AllMangasFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/AllAnime_recycler"
+        android:id="@+id/AllMangas_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

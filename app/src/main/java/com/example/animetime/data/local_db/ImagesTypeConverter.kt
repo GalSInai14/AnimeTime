@@ -1,4 +1,4 @@
-package com.example.animetime.local_db
+package com.example.animetime.data.local_db
 
 import androidx.room.TypeConverter
 import com.example.animetime.data.models.Images

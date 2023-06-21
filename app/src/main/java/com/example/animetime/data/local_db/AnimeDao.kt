@@ -1,11 +1,11 @@
-package com.example.animetime.local_db
+package com.example.animetime.data.local_db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.animetime.data.models.Anime
+import com.example.animetime.data.models.anime.Anime
 
 @Dao
 interface AnimeDao {

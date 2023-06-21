@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/allAnimeFragment">
+    app:startDestination="@id/homePageFragment">
 
     <fragment
         android:id="@+id/allAnimeFragment"
@@ -12,11 +12,87 @@
         tools:layout="@layout/fragment_all_anime" >
         <action
             android:id="@+id/action_allAnimeFragment_to_singleAnimeFragment"
-            app:destination="@id/singleAnimeFragment" />
+            app:destination="@id/singleAnimeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_allAnimeFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/homePageFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/singleAnimeFragment"
         android:name="com.example.animetime.ui.single_anime_fragment.SingleAnimeFragment"
         android:label="fragment_single_anime"
-        tools:layout="@layout/fragment_single_anime" />
+        tools:layout="@layout/fragment_single_anime" >
+        <action
+            android:id="@+id/action_singleAnimeFragment_to_allAnimeFragment"
+            app:destination="@id/allAnimeFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/allMangasFragment"
+        android:name="com.example.animetime.ui.all_mangas.AllMangasFragment"
+        android:label="fragment_all_mangas"
+        tools:layout="@layout/fragment_all_mangas" >
+        <action
+            android:id="@+id/action_allMangasFragment_to_singleMangaFragment"
+            app:destination="@id/singleMangaFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_allMangasFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/homePageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleMangaFragment"
+        android:name="com.example.animetime.ui.single_manga_fragment.SingleMangaFragment"
+        android:label="fragment_single_manga"
+        tools:layout="@layout/fragment_single_manga" >
+        <action
+            android:id="@+id/action_singleMangaFragment_to_allMangasFragment"
+            app:destination="@id/allMangasFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.animetime.ui.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePageFragment_to_allAnimeFragment"
+            app:destination="@id/allAnimeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_homePageFragment_to_allMangasFragment"
+            app:destination="@id/allMangasFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
 </navigation>

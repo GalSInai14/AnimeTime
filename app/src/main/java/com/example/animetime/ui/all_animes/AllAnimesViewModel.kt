@@ -1,7 +1,7 @@
 package com.example.animetime.ui.all_animes
 
 import androidx.lifecycle.ViewModel
-import com.example.animetime.repository.AnimeRepository
+import com.example.animetime.data.repository.AnimeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -10,4 +10,7 @@
     <color name="imdb_yellow">#FFC107</color>
     <color name="imdb_grey">#3E3C3C</color>
     <color name="error_color">#FFA500</color>
+    <color name="backgroundDefault">#F6F6F6</color>
+    <color name="animeTimeRed">#E65454</color>
+    <color name="animeTimeTitle">#DF4141</color>
 </resources>

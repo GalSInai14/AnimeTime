@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDefault"
+    android:orientation="vertical"
+    tools:context=".ui.HomePageFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:text="AnimeTime"
+        android:textAlignment="center"
+        android:textColor="@color/animeTimeTitle"
+        android:textSize="60dp"
+        android:textStyle="bold" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/wizzardsushi" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="sans-serif"
+        android:text="Hello! I'm Sushigo the wizard. Do you like animes? Mangas? Good! I have them all here, so come take a look!"
+        android:textAlignment="center"
+        android:textColor="@color/animeTimeRed"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:id="@+id/AnimeButton"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/animeTimeRed"
+        android:text="Animes"
+        android:textColor="@color/backgroundDefault"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_live_tv_24" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:id="@+id/MangaButton"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/animeTimeRed"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Mangas"
+        android:textColor="@color/animeTimeRed"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_menu_book_24"
+        app:iconTint="@color/animeTimeRed"/>
+
+
+</LinearLayout>

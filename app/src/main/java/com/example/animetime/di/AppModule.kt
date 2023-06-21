@@ -2,7 +2,8 @@ package com.example.animetime.di
 
 import android.content.Context
 import com.example.animetime.data.remote_db.AnimeService
-import com.example.animetime.local_db.AppDatabase
+import com.example.animetime.data.local_db.AppDatabase
+import com.example.animetime.data.remote_db.MangaService
 import com.example.animetime.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -34,6 +35,10 @@ class AppModule {
         retrofit.create(AnimeService::class.java)
 
     @Provides
+    fun provideMangaService(retrofit: Retrofit): MangaService =
+        retrofit.create(MangaService::class.java)
+
+    @Provides
     @Singleton
     fun provideLocalDataBase(@ApplicationContext appContext: Context): AppDatabase =
         AppDatabase.getDatabase(appContext)
@@ -41,4 +46,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideAnimeDao(database: AppDatabase) = database.animeDao()
+
+    @Provides
+    @Singleton
+    fun provideMangaDao(database: AppDatabase) = database.mangaDao()
 }

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.animetime.data.models.Anime
+import com.example.animetime.data.models.anime.Anime
 import com.example.animetime.databinding.ItemAnimeBinding
 
 class AnimeAdapter(private val listener: AnimeItemListener) :
@@ -26,13 +26,11 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
         }
 
         fun bind(item: Anime) {
-
             this.anime = item
-            itemBinding.animecardTitle.text = item.title_english
-
             val synopsis = item.synopsis
             val maxLength = 50
 
+            itemBinding.animecardTitle.text = item.title_english
             if (synopsis != null) {
                 if (synopsis.length > maxLength) {
                     val trimmedSynopsis = synopsis.substring(0, maxLength) + "..."
@@ -40,32 +38,43 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
                 } else {
                     itemBinding.animecardDesc.text = synopsis
                 }
+            } else {
+                itemBinding.animecardDesc.text = ""
             }
 
-            Glide.with(itemBinding.root).load(item.images?.jpg?.image_url ?: "")
+            Glide.with(itemBinding.root)
+                .load(item.images?.jpg?.image_url)
                 .into(itemBinding.animecardImage)
         }
 
         override fun onClick(v: View?) {
             listener.onAnimeClick(anime.mal_id)
         }
-
     }
 
     fun setAnimes(animes: Collection<Anime>) {
         this.animes.clear()
-        this.animes.addAll(animes)
+        this.animes.addAll(animes.filter { item ->
+            item.title_english != null &&
+                    item.synopsis != null &&
+                    item.images?.jpg?.image_url != null
+        })
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
-        val binding = ItemAnimeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemAnimeBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return AnimeViewHolder(binding, listener)
     }
 
-    override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) =
-        holder.bind(animes[position])
-
+    override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
+        val item = animes[position]
+        holder.bind(item)
+    }
 
     override fun getItemCount() = animes.size
 
@@ -73,6 +82,7 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
         fun onAnimeClick(animeId: Int)
     }
 }
+
 
 
 

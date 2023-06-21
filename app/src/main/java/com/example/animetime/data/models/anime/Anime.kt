@@ -1,9 +1,10 @@
-package com.example.animetime.data.models
+package com.example.animetime.data.models.anime
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.animetime.local_db.ImagesTypeConverter
+import com.example.animetime.data.local_db.ImagesTypeConverter
+import com.example.animetime.data.models.Images
 
 @Entity(tableName = "animes")
 data class Anime(

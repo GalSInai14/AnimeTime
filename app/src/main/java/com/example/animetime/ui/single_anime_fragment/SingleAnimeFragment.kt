@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.example.animetime.R
-import com.example.animetime.data.models.Anime
+import com.example.animetime.data.models.anime.Anime
 import com.example.animetime.databinding.FragmentSingleAnimeBinding
-import com.example.animetime.local_db.ImagesTypeConverter
 import com.example.animetime.utils.Loading
 import com.example.animetime.utils.Success
 import com.example.animetime.utils.autoCleared

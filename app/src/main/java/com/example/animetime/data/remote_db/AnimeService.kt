@@ -1,7 +1,7 @@
 package com.example.animetime.data.remote_db
 
-import com.example.animetime.data.models.AllAnimes
-import com.example.animetime.data.models.Anime
+import com.example.animetime.data.models.anime.AllAnimes
+import com.example.animetime.data.models.anime.Anime
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

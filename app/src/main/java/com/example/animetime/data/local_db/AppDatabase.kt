@@ -1,17 +1,19 @@
-package com.example.animetime.local_db
+package com.example.animetime.data.local_db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.animetime.data.models.Anime
+import com.example.animetime.data.models.anime.Anime
+import com.example.animetime.data.models.manga.Manga
 
-@Database(entities = [Anime::class], version = 2, exportSchema = false)
-@TypeConverters(value = [ImagesTypeConverter::class])
+@Database(entities = [Anime::class, Manga::class], version = 3, exportSchema = false)
+@TypeConverters(value = [ImagesTypeConverter::class, PublishedTypeConverter::class])
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun animeDao(): AnimeDao
+    abstract fun mangaDao(): MangaDao
 
     companion object {
 
@@ -23,7 +25,7 @@ abstract class AppDatabase : RoomDatabase() {
                 Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "animes_db"
+                    "animetime_db"
                 )
                     .fallbackToDestructiveMigration().build().also {
                         instance = it
