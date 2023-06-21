@@ -39,6 +39,10 @@ class AllAnimeFragment : Fragment(), AnimeAdapter.AnimeItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.AnimeFavButton.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_allAnimeFragment_to_allFavoriteAnimesFragment)
+        })
+
         adapter = AnimeAdapter(this)
         binding.AllAnimeRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.AllAnimeRecycler.adapter = adapter
@@ -63,4 +67,5 @@ class AllAnimeFragment : Fragment(), AnimeAdapter.AnimeItemListener {
             bundleOf("id" to animeId)
         )
     }
+
 }

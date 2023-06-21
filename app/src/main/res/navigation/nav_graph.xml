@@ -26,6 +26,9 @@
             app:popExitAnim="@anim/to_left"
             app:popUpTo="@id/homePageFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_allAnimeFragment_to_allFavoriteAnimesFragment"
+            app:destination="@id/allFavoriteAnimesFragment" />
     </fragment>
     <fragment
         android:id="@+id/singleAnimeFragment"
@@ -95,4 +98,9 @@
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
     </fragment>
+    <fragment
+        android:id="@+id/allFavoriteAnimesFragment"
+        android:name="com.example.animetime.ui.all_favorite_animes.AllFavoriteAnimesFragment"
+        android:label="fragment_all_favorite_animes"
+        tools:layout="@layout/fragment_all_favorite_animes" />
 </navigation>

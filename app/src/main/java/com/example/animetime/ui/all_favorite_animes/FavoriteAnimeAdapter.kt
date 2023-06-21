@@ -1,6 +1,5 @@
 package com.example.animetime.ui.all_favorite_animes
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,10 +9,12 @@ import com.bumptech.glide.Glide
 import com.example.animetime.data.models.favorite_anime.FavoriteAnime
 import com.example.animetime.databinding.ItemAnimeBinding
 
-class FavoriteAnimeAdapter : ListAdapter<FavoriteAnime, FavoriteAnimeAdapter.FavoriteAnimeViewHolder>(DiffCallback()) {
+class FavoriteAnimeAdapter(private val listener: FavoriteAnimeItemListener) :
+    ListAdapter<FavoriteAnime, FavoriteAnimeAdapter.FavoriteAnimeViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAnimeViewHolder {
-        val binding = ItemAnimeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemAnimeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavoriteAnimeViewHolder(binding)
     }
 
@@ -21,7 +22,8 @@ class FavoriteAnimeAdapter : ListAdapter<FavoriteAnime, FavoriteAnimeAdapter.Fav
         holder.bind(getItem(position))
     }
 
-    inner class FavoriteAnimeViewHolder(private val binding: ItemAnimeBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class FavoriteAnimeViewHolder(private val binding: ItemAnimeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(favoriteAnime: FavoriteAnime) {
             val synopsis = favoriteAnime.synopsis
@@ -42,6 +44,10 @@ class FavoriteAnimeAdapter : ListAdapter<FavoriteAnime, FavoriteAnimeAdapter.Fav
             Glide.with(binding.root)
                 .load(favoriteAnime.images?.jpg?.image_url)
                 .into(binding.animecardImage)
+
+            binding.root.setOnClickListener {
+                listener.onFavoriteAnimeClick(favoriteAnime.mal_id)
+            }
         }
     }
 
@@ -53,5 +59,9 @@ class FavoriteAnimeAdapter : ListAdapter<FavoriteAnime, FavoriteAnimeAdapter.Fav
         override fun areContentsTheSame(oldItem: FavoriteAnime, newItem: FavoriteAnime): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface FavoriteAnimeItemListener {
+        fun onFavoriteAnimeClick(animeId: Int)
     }
 }
