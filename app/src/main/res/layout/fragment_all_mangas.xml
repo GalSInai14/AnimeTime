@@ -4,7 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDefault"
+    android:orientation="vertical"
     tools:context=".ui.all_mangas.AllMangasFragment">
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:id="@+id/MangaFavButton"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/animeTimeRed"
+        android:text="Favorites"
+        android:textColor="@color/backgroundDefault"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/AllMangas_recycler"

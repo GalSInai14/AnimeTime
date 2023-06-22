@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.animetime.R
 import com.example.animetime.databinding.FragmentAllAnimeBinding
 import com.example.animetime.databinding.FragmentAllMangasBinding
+import com.example.animetime.ui.all_mangas.AllMangasViewModel
 import com.example.animetime.ui.all_mangas.MangaAdapter
 import com.example.animetime.utils.Loading
 import com.example.animetime.utils.Success
@@ -41,6 +42,10 @@ class AllMangasFragment : Fragment(), MangaAdapter.MangaItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.MangaFavButton.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_allMangasFragment_to_allFavoriteMangasFragment)
+        })
+
         adapter = MangaAdapter(this)
         binding.AllMangasRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.AllMangasRecycler.adapter = adapter
@@ -59,10 +64,11 @@ class AllMangasFragment : Fragment(), MangaAdapter.MangaItemListener {
         }
     }
 
-   override fun onMangaClick(animeId: Int) {
-       findNavController().navigate(
-           R.id.action_allMangasFragment_to_singleMangaFragment,
-           bundleOf("id" to animeId)
-      )
-   }
+    override fun onMangaClick(animeId: Int) {
+        findNavController().navigate(
+            R.id.action_allMangasFragment_to_singleMangaFragment,
+            bundleOf("id" to animeId)
+        )
+    }
+
 }

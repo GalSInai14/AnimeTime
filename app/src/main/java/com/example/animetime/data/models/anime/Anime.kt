@@ -19,4 +19,16 @@ data class Anime(
     val year: Int?
 
 ) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Anime) return false
+
+        return mal_id == other.mal_id &&
+                title_english == other.title_english &&
+                images == other.images &&
+                episodes == other.episodes &&
+                score == other.score &&
+                synopsis == other.synopsis &&
+                year == other.year
+    }
 }

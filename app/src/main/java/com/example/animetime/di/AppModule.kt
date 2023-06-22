@@ -54,4 +54,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideFavoriteDao(database: AppDatabase) = database.favoriteAnimeDao()
+
+    @Provides
+    @Singleton
+    fun provideFavoriteMangaDao(database: AppDatabase) = database.favoriteMangaDao()
 }
