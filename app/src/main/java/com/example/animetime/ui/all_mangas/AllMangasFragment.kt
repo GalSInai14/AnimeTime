@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,11 +53,13 @@ class AllMangasFragment : Fragment(), MangaAdapter.MangaItemListener {
 
         viewModel.mangas.observe(viewLifecycleOwner) {
             when (it.status) {
-                is Loading -> Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_SHORT).show()
+                is Loading -> binding.progressBarID.isVisible = true
                 is Success -> {
+                    binding.progressBarID.isVisible = false
                     adapter.setMangas(ArrayList(it.status.data))
                 }
                 is Error -> {
+                    binding.progressBarID.isVisible = false
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_SHORT).show()
                 }
                 else -> {}

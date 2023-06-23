@@ -20,6 +20,19 @@
             android:backgroundTint="@color/animeTimeCard"
             app:cardCornerRadius="20dp">
 
+            <ProgressBar
+                android:id="@+id/progressBar_ID"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,20 +68,19 @@
                         android:layout_width="50dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/baseline_star_rate_24"/>
+                        android:src="@drawable/baseline_star_rate_24" />
 
                     <TextView
                         android:id="@+id/ratingAnime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
                         android:layout_gravity="center"
-                        android:text="9.9"
                         android:layout_marginTop="3dp"
+                        android:fontFamily="sans-serif"
+                        android:text="9.9"
                         android:textColor="@color/imdb_yellow"
                         android:textSize="30sp"
-                        android:textStyle="bold"/>
-
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
@@ -86,8 +98,8 @@
                         android:fontFamily="sans-serif"
                         android:text="@string/released_year"
                         android:textColor="@color/animeTimeTitle"
-                        android:textStyle="bold"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/rel_year_animePage"
@@ -114,8 +126,8 @@
                         android:fontFamily="sans-serif"
                         android:text="@string/number_of_episodes"
                         android:textColor="@color/animeTimeTitle"
-                        android:textStyle="bold"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/ep_number_animePage"
@@ -125,7 +137,7 @@
                         android:text="@string/_2017"
                         android:textColor="@color/animeTimeDetails"
                         android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -143,17 +155,17 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/FavouriteAnimeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/animeTimeRed"
             android:src="@drawable/baseline_favorite_border_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:backgroundTint="@color/animeTimeRed"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

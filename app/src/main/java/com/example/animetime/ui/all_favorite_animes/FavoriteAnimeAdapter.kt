@@ -1,67 +1,90 @@
 package com.example.animetime.ui.all_favorite_animes
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.animetime.data.models.favorite_anime.FavoriteAnime
 import com.example.animetime.databinding.ItemAnimeBinding
 
 class FavoriteAnimeAdapter(private val listener: FavoriteAnimeItemListener) :
-    ListAdapter<FavoriteAnime, FavoriteAnimeAdapter.FavoriteAnimeViewHolder>(DiffCallback()) {
+    RecyclerView.Adapter<FavoriteAnimeAdapter.FavoriteAnimeViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAnimeViewHolder {
-        val binding =
-            ItemAnimeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FavoriteAnimeViewHolder(binding)
-    }
+    private val favoriteAnimes = ArrayList<FavoriteAnime>()
 
-    override fun onBindViewHolder(holder: FavoriteAnimeViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
+    class FavoriteAnimeViewHolder(
+        private val itemBinding: ItemAnimeBinding,
+        private val listener: FavoriteAnimeItemListener
+    ) : RecyclerView.ViewHolder(itemBinding.root),
+        View.OnClickListener {
 
-    inner class FavoriteAnimeViewHolder(private val binding: ItemAnimeBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+        private lateinit var favoriteAnime: FavoriteAnime
 
-        fun bind(favoriteAnime: FavoriteAnime) {
-            val synopsis = favoriteAnime.synopsis
+        init {
+            itemBinding.root.setOnClickListener(this)
+        }
+
+        fun bind(
+            item: FavoriteAnime
+        ) {
+            this.favoriteAnime = item
+            val synopsis = item.synopsis
             val maxLength = 50
 
-            binding.animecardTitle.text = favoriteAnime.title_english
+            itemBinding.animecardTitle.text = item.title_english
             if (synopsis != null) {
                 if (synopsis.length > maxLength) {
                     val trimmedSynopsis = synopsis.substring(0, maxLength) + "..."
-                    binding.animecardDesc.text = trimmedSynopsis
+                    itemBinding.animecardDesc.text = trimmedSynopsis
                 } else {
-                    binding.animecardDesc.text = synopsis
+                    itemBinding.animecardDesc.text = synopsis
                 }
             } else {
-                binding.animecardDesc.text = ""
+                itemBinding.animecardDesc.text = ""
             }
 
-            Glide.with(binding.root)
-                .load(favoriteAnime.images?.jpg?.image_url)
-                .into(binding.animecardImage)
+            Glide.with(itemBinding.root)
+                .load(item.images?.jpg?.image_url)
+                .into(itemBinding.animecardImage)
+        }
 
-            binding.root.setOnClickListener {
-                listener.onFavoriteAnimeClick(favoriteAnime.mal_id)
-            }
+        override fun onClick(v: View?) {
+            listener.onFavoriteAnimeClick(favoriteAnime.mal_id)
         }
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<FavoriteAnime>() {
-        override fun areItemsTheSame(oldItem: FavoriteAnime, newItem: FavoriteAnime): Boolean {
-            return oldItem.mal_id == newItem.mal_id
-        }
+    fun favoriteAt(position: Int) = favoriteAnimes[position]
 
-        override fun areContentsTheSame(oldItem: FavoriteAnime, newItem: FavoriteAnime): Boolean {
-            return oldItem == newItem
-        }
+
+    fun setFavoriteAnimes(favoriteAnimes: Collection<FavoriteAnime>) {
+        this.favoriteAnimes.clear()
+        this.favoriteAnimes.addAll(favoriteAnimes.filter { item ->
+            item.title_english != null &&
+                    item.synopsis != null &&
+                    item.images?.jpg?.image_url != null
+        })
+        notifyDataSetChanged()
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAnimeViewHolder {
+        val binding = ItemAnimeBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return FavoriteAnimeViewHolder(binding, listener)
+    }
+
+    override fun onBindViewHolder(holder: FavoriteAnimeViewHolder, position: Int) {
+        val item = favoriteAnimes[position]
+        holder.bind(item)
+    }
+
+    override fun getItemCount() = favoriteAnimes.size
 
     interface FavoriteAnimeItemListener {
-        fun onFavoriteAnimeClick(animeId: Int)
+        fun onFavoriteAnimeClick(favoriteAnimeId: Int)
     }
 }
+

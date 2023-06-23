@@ -9,7 +9,9 @@ import com.example.animetime.data.models.anime.Anime
 import com.example.animetime.data.models.favorite_anime.FavoriteAnime
 import com.example.animetime.data.models.favorite_manga.FavoriteManga
 import com.example.animetime.data.models.manga.Manga
+import javax.inject.Singleton
 
+@Singleton
 @Database(entities = [Anime::class, Manga::class, FavoriteAnime::class, FavoriteManga::class], version = 5, exportSchema = false)
 @TypeConverters(value = [ImagesTypeConverter::class, PublishedTypeConverter::class])
 abstract class AppDatabase : RoomDatabase() {

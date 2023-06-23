@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDefault"
-    tools:context=".ui.all_animes.AllAnimeFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.all_animes.AllAnimeFragment">
+
 
     <Button
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:id="@+id/AnimeFavButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="200dp"
         android:layout_height="55dp"
         android:layout_gravity="center"
@@ -18,13 +20,24 @@
         android:text="Favorites"
         android:textColor="@color/backgroundDefault"
         android:textSize="20dp"
-        android:textStyle="bold"
-         />
+        android:textStyle="bold" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/AllAnime_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarID"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </LinearLayout>
