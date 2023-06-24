@@ -17,9 +17,9 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:backgroundTint="@color/animeTimeRed"
-        android:text="Favorites"
+        android:text="@string/favorites_animes"
         android:textColor="@color/backgroundDefault"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 

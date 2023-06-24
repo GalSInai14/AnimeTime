@@ -6,6 +6,7 @@
     android:background="@color/backgroundDefault"
     tools:context=".ui.all_favorite_animes.AllFavoriteAnimesFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/AllFavoriteAnime_recycler"
         android:layout_width="match_parent"

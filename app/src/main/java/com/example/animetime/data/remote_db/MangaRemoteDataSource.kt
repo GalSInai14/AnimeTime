@@ -4,6 +4,6 @@ import javax.inject.Inject
 
 class MangaRemoteDataSource @Inject constructor(private val mangaService: MangaService) :
     BaseDataSource() {
-    suspend fun getMangas() = getResult { mangaService.getTopMangas() }
+    suspend fun getMangas(page: Int) = getResult { mangaService.getTopMangas(page) }
     suspend fun getManga(id: Int) = getResult { mangaService.getMangaById(id) }
 }

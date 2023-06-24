@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif"
-        android:text="AnimeTime"
+        android:text="@string/animetime_title"
         android:textAlignment="center"
         android:textColor="@color/animeTimeTitle"
         android:textSize="60dp"
@@ -34,10 +34,10 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:fontFamily="sans-serif"
-        android:text="Hello! I'm Sushigo the wizard. Do you like animes? Mangas? Good! I have them all here, so come take a look!"
+        android:text="@string/sushigo_text"
         android:textAlignment="center"
         android:textColor="@color/animeTimeRed"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
@@ -48,11 +48,13 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:backgroundTint="@color/animeTimeRed"
-        android:text="Animes"
+        android:text="@string/animes_button"
         android:textColor="@color/backgroundDefault"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:icon="@drawable/baseline_live_tv_24" />
+        app:icon="@drawable/baseline_live_tv_24"
+        app:iconTint="@color/backgroundDefault"
+        />
 
     <Button
         style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
@@ -63,9 +65,9 @@
         app:strokeColor="@color/animeTimeRed"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="Mangas"
+        android:text="@string/mangas_button"
         android:textColor="@color/animeTimeRed"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:icon="@drawable/baseline_menu_book_24"
         app:iconTint="@color/animeTimeRed"/>

@@ -12,9 +12,9 @@ class MangaRepository @Inject constructor(
     private val localDataSource: MangaDao
 ) {
 
-    fun getMangas() = performFetchingAndSaving(
+    fun getMangas(page: Int) = performFetchingAndSaving(
         { localDataSource.getAllMangas() },
-        { remoteDataSource.getMangas() },
+        { remoteDataSource.getMangas(page) },
         { localDataSource.insertMangas(it.data) }
     )
 

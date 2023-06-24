@@ -12,9 +12,9 @@ class AnimeRepository @Inject constructor(
     private val localDataSource: AnimeDao
 ) {
 
-    fun getAnimes() = performFetchingAndSaving(
+    fun getAnimes(page: Int) = performFetchingAndSaving(
         { localDataSource.getAllAnimes() },
-        { remoteDataSource.getAnimes() },
+        { remoteDataSource.getAnimes(page) },
         { localDataSource.insertAnimes(it.data) }
     )
 

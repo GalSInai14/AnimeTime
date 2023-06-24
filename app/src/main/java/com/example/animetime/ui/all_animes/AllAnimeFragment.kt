@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.animetime.R
 import com.example.animetime.databinding.FragmentAllAnimeBinding
 import com.example.animetime.utils.Loading
@@ -39,6 +40,7 @@ class AllAnimeFragment : Fragment(), AnimeAdapter.AnimeItemListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var isLoading = false
 
         binding.AnimeFavButton.setOnClickListener(View.OnClickListener {
             findNavController().navigate(R.id.action_allAnimeFragment_to_allFavoriteAnimesFragment)
@@ -50,18 +52,38 @@ class AllAnimeFragment : Fragment(), AnimeAdapter.AnimeItemListener {
 
         viewModel.animes.observe(viewLifecycleOwner) {
             when (it.status) {
-                is Loading -> binding.progressBarID.isVisible = true
+                is Loading -> {
+                    isLoading = true
+                    binding.progressBarID.isVisible = true
+                }
                 is Success -> {
+                    isLoading = false
                     binding.progressBarID.isVisible = false
                     adapter.setAnimes(ArrayList(it.status.data))
                 }
                 is Error -> {
+                    isLoading = false
                     binding.progressBarID.isVisible = false
                     Toast.makeText(requireContext(), it.status.message, Toast.LENGTH_SHORT).show()
                 }
                 else -> {}
             }
         }
+
+        binding.AllAnimeRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val visibleItemCount = layoutManager.childCount
+                val totalItemCount = layoutManager.itemCount
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+                //val isSearchEmpty = binding.search.query.toString().isEmpty()
+                if (!isLoading && (visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
+                    val currentPage = viewModel.getCurrentPage()
+                    viewModel.setCurrentPage(currentPage + 1)
+                }
+            }
+        })
     }
 
     override fun onAnimeClick(animeId: Int) {

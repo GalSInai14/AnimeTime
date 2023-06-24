@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AnimeTime</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="delete">מחק</string>
+    <string name="favorites_animes">אנימות מועדפות</string>
+    <string name="favorites_mangas">מנגות אהובות</string>
+    <string name="sushigo_text">שלום! אני סושיגו הקוסם. האם אתה אוהב אנימות? מנגה? טוֹב! יש לי את כולם כאן, אז בואו להסתכל!</string>
+    <string name="animes_button">אנימות</string>
+    <string name="mangas_button">מנגה</string>
+    <string name="default_score">9.9</string>
+    <string name="number_of_volumes">מספר הכרכים</string>
+    <string name="remove_favorite_anime_title">הסר  מהאנימות המועדפות</string>
+    <string name="remove_favorite_anime_text">האם אתה רוצה להסיר את האנימה הזו מרשימת האנימות המועדפות עליך?</string>
+    <string name="remove_favorite_manga_title">הסר ממנגות מועדפות</string>
+    <string name="remove_favorite_manga_text">האם אתה רוצה להסיר את המנגה הזו מרשימת המנגות המועדפות עליך?</string>
+    <string name="released_year">שנת יציאה:</string>
+    <string name="number_of_episodes">מספר פרקים</string>
+</resources>

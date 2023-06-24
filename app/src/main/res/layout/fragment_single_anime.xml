@@ -77,7 +77,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="3dp"
                         android:fontFamily="sans-serif"
-                        android:text="9.9"
+                        android:text="@string/default_score"
                         android:textColor="@color/imdb_yellow"
                         android:textSize="30sp"
                         android:textStyle="bold" />

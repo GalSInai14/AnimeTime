@@ -34,7 +34,7 @@
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:text="ggggg"
+                android:text="@string/ggggg"
                 android:textColor="@color/animeTimeTitle"
                 android:textSize="22sp" />
 

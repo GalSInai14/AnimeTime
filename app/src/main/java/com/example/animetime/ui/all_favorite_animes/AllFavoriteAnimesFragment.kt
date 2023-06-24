@@ -65,14 +65,14 @@ class AllFavoriteAnimesFragment : Fragment(),
                     adapter.favoriteAt(viewHolder.adapterPosition)
 
                 builder.apply {
-                    setTitle("Remove From Favorite Animes")
-                    setMessage("Do you want to remove this Manga from your favorite mangas list?")
+                    setTitle(getString(R.string.remove_favorite_anime_title))
+                    setMessage(getString(R.string.remove_favorite_anime_text))
                     setCancelable(false)
-                    setPositiveButton("Yes") { _, _ ->
+                    setPositiveButton(getString(R.string.yes)) { _, _ ->
                         viewModel.removeFavoriteAnimeFromFavorites(item)
                         binding.AllFavoriteAnimeRecycler.adapter!!.notifyItemRemoved(viewHolder.adapterPosition)
                     }
-                    setNegativeButton("No") { _, _ ->
+                    setNegativeButton(getString(R.string.no)) { _, _ ->
                         binding.AllFavoriteAnimeRecycler.adapter!!.notifyItemChanged(viewHolder.adapterPosition)
                     }
                 }.show()
