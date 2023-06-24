@@ -82,7 +82,7 @@ class SingleAnimeFragment : Fragment() {
                 } else {
                     viewModel.addAnimeToFavorites(currentAnime as Anime)
                     binding.FavouriteAnimeBtn.setImageResource(R.drawable.baseline_favorite_24)
-                    Toast.makeText(requireContext(), getString(R.string.addFavoriteMangaToast), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.addToFavoriteAnime), Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -28,7 +28,11 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_allAnimeFragment_to_allFavoriteAnimesFragment"
-            app:destination="@id/allFavoriteAnimesFragment" />
+            app:destination="@id/allFavoriteAnimesFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/singleAnimeFragment"
@@ -66,7 +70,11 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_allMangasFragment_to_allFavoriteMangasFragment"
-            app:destination="@id/allFavoriteMangasFragment" />
+            app:destination="@id/allFavoriteMangasFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/singleMangaFragment"
@@ -108,7 +116,11 @@
         tools:layout="@layout/fragment_all_favorite_animes" >
         <action
             android:id="@+id/action_allFavoriteAnimesFragment_to_singleAnimeFragment"
-            app:destination="@id/singleAnimeFragment" />
+            app:destination="@id/singleAnimeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/allFavoriteMangasFragment"
@@ -117,6 +129,10 @@
         tools:layout="@layout/fragment_all_favorite_mangas" >
         <action
             android:id="@+id/action_allFavoriteMangasFragment_to_singleMangaFragment"
-            app:destination="@id/singleMangaFragment" />
+            app:destination="@id/singleMangaFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
 </navigation>
