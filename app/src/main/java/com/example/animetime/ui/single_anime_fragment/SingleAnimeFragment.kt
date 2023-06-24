@@ -76,11 +76,13 @@ class SingleAnimeFragment : Fragment() {
                 if (it) {
                     viewModel.removeAnimeFromFavorites(currentAnime as Anime)
                     binding.FavouriteAnimeBtn.setImageResource(R.drawable.baseline_favorite_border_24)
+                    Toast.makeText(requireContext(), getString(R.string.removeFavoriteAnimesToast), Toast.LENGTH_SHORT).show()
+
 
                 } else {
                     viewModel.addAnimeToFavorites(currentAnime as Anime)
                     binding.FavouriteAnimeBtn.setImageResource(R.drawable.baseline_favorite_24)
-
+                    Toast.makeText(requireContext(), getString(R.string.addFavoriteMangaToast), Toast.LENGTH_SHORT).show()
                 }
             }
         }

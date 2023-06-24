@@ -51,6 +51,19 @@ class AllMangasFragment : Fragment(), MangaAdapter.MangaItemListener {
         })
 
         adapter = MangaAdapter(this)
+
+        binding.searchManga.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
+
         binding.AllMangasRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.AllMangasRecycler.adapter = adapter
 
@@ -80,10 +93,12 @@ class AllMangasFragment : Fragment(), MangaAdapter.MangaItemListener {
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                //val isSearchEmpty = binding.search.query.toString().isEmpty()
+                val isSearchEmpty = binding.searchManga.query.toString().isEmpty()
                 if (!isLoading && (visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
                     val currentPage = viewModel.getCurrentPage()
-                    viewModel.setCurrentPage(currentPage + 1)
+                    if (isSearchEmpty) {
+                        viewModel.setCurrentPage(currentPage + 1)
+                    }
                 }
             }
         })

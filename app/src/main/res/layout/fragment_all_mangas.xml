@@ -8,6 +8,17 @@
     android:orientation="vertical"
     tools:context=".ui.all_mangas.AllMangasFragment">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_manga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/animeTimeRed"
+        app:closeIcon="@drawable/baseline_clear_24"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/search_manga"
+        app:searchHintIcon="@null"
+        app:searchIcon="@drawable/baseline_search_24" />
+
     <Button
         android:id="@+id/MangaFavButton"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"

@@ -23,6 +23,12 @@
     <string name="number_of_episodes">Number of Episodes:</string>
     <string name="status">Status:</string>
     <string name="ongoing">Ongoing...</string>
+    <string name="search_anime">Search Anime...</string>
+    <string name="search_manga">Search Manga...</string>
+    <string name="addFavoriteMangaToast">Added to favorite Mangas</string>
+    <string name="removeFavoriteManga">Removed from favorite Mangas</string>
+    <string name="removeFavoriteAnimesToast">Removed from favorite Animes</string>
+    <string name="addToFavoriteAnime">Added to favorite Animes</string>
 
 
 </resources>

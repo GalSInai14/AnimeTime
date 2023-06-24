@@ -1,17 +1,21 @@
 package com.example.animetime.ui.all_animes
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.Filter
+import android.widget.Filterable
 import com.bumptech.glide.Glide
 import com.example.animetime.data.models.anime.Anime
 import com.example.animetime.databinding.ItemAnimeBinding
 
 class AnimeAdapter(private val listener: AnimeItemListener) :
-    RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder>() {
+    RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder>(), Filterable {
 
     private val animes = ArrayList<Anime>()
+    private var filteredAnimes = ArrayList<Anime>()
 
     class AnimeViewHolder(
         private val itemBinding: ItemAnimeBinding,
@@ -58,6 +62,18 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
             item.title_english != null &&
                     item.synopsis != null &&
                     item.images?.jpg?.image_url != null
+        }.filter { item ->
+            // Exclude anime with null attributes
+            !item.title_english.isNullOrEmpty() &&
+                    !item.synopsis.isNullOrEmpty() &&
+                    item.images?.jpg?.image_url != null
+        })
+        this.filteredAnimes.clear()
+        this.filteredAnimes.addAll(animes.filter { item ->
+            // Exclude anime with null attributes
+            !item.title_english.isNullOrEmpty() &&
+                    !item.synopsis.isNullOrEmpty() &&
+                    item.images?.jpg?.image_url != null
         })
         notifyDataSetChanged()
     }
@@ -72,18 +88,44 @@ class AnimeAdapter(private val listener: AnimeItemListener) :
     }
 
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
-        val item = animes[position]
-        holder.bind(item)
+        if (position < filteredAnimes.size) {
+            holder.bind(filteredAnimes[position])
+        } else {
+            holder.bind(animes[position])
+        }
     }
 
-    override fun getItemCount() = animes.size
+    override fun getItemCount() = filteredAnimes.size
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterPattern = constraint.toString()
+                if (filterPattern.isEmpty()) {
+                    filteredAnimes = ArrayList(animes)
+                } else {
+                    val filterResultList = ArrayList<Anime>()
+                    for (anime in animes) {
+                        if (anime.title_english?.lowercase()?.contains(filterPattern) == true
+                        ) {
+                            filterResultList.add(anime)
+                        }
+                    }
+                    filteredAnimes = filterResultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = filteredAnimes
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredAnimes = results?.values as ArrayList<Anime>
+                notifyDataSetChanged()
+            }
+        }
+    }
 
     interface AnimeItemListener {
         fun onAnimeClick(animeId: Int)
     }
 }
-
-
-
-
-

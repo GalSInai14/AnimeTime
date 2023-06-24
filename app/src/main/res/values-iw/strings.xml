@@ -19,4 +19,10 @@
     <string name="number_of_episodes">מספר פרקים:</string>
     <string name="status">סטאטוס:</string>
     <string name="ongoing">עדיין בכתיבה</string>
+    <string name="search_anime">חפש אנימה...</string>
+    <string name="search_manga">חפש מנגה...</string>
+    <string name="addFavoriteMangaToast">התווסף לרשימת מנגות אהובות</string>
+    <string name="removeFavoriteManga">הוסר מרשימת מנגות אהובות</string>
+    <string name="removeFavoriteAnimesToast">הוסר מרשימת אנימות אהובות</string>
+    <string name="addToFavoriteAnime">התווסף לרשימת אנימות אהובות</string>
 </resources>

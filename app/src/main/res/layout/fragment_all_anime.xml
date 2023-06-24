@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundDefault"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".ui.all_animes.AllAnimeFragment">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_anime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/animeTimeRed"
+        app:closeIcon="@drawable/baseline_clear_24"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/search_anime"
+        app:searchHintIcon="@null"
+        app:searchIcon="@drawable/baseline_search_24" />
 
     <Button
         android:id="@+id/AnimeFavButton"
@@ -21,6 +32,7 @@
         android:textColor="@color/backgroundDefault"
         android:textSize="20sp"
         android:textStyle="bold" />
+
 
 
     <androidx.recyclerview.widget.RecyclerView

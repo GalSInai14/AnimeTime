@@ -73,10 +73,12 @@ class SingleMangaFragment : Fragment() {
             viewModel.isFavoriteManga(mangaId).observe(viewLifecycleOwner) {
                 if (it) {
                     viewModel.removeMangaFromFavorites(currentManga as Manga)
+                    Toast.makeText(requireContext(), getString(R.string.removeFavoriteManga), Toast.LENGTH_SHORT).show()
                     binding.FavouriteMangaBtn.setImageResource(R.drawable.baseline_favorite_border_24)
 
                 } else {
                     viewModel.addMangaToFavorites(currentManga as Manga)
+                    Toast.makeText(requireContext(), getString(R.string.addFavoriteMangaToast), Toast.LENGTH_SHORT).show()
                     binding.FavouriteMangaBtn.setImageResource(R.drawable.baseline_favorite_24)
                 }
             }

@@ -47,8 +47,22 @@ class AllAnimeFragment : Fragment(), AnimeAdapter.AnimeItemListener {
         })
 
         adapter = AnimeAdapter(this)
+        binding.searchAnime.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+
+        })
+
         binding.AllAnimeRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.AllAnimeRecycler.adapter = adapter
+
 
         viewModel.animes.observe(viewLifecycleOwner) {
             when (it.status) {
@@ -77,10 +91,12 @@ class AllAnimeFragment : Fragment(), AnimeAdapter.AnimeItemListener {
                 val visibleItemCount = layoutManager.childCount
                 val totalItemCount = layoutManager.itemCount
                 val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                //val isSearchEmpty = binding.search.query.toString().isEmpty()
+                val isSearchEmpty = binding.searchAnime.query.toString().isEmpty()
                 if (!isLoading && (visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
                     val currentPage = viewModel.getCurrentPage()
-                    viewModel.setCurrentPage(currentPage + 1)
+                    if (isSearchEmpty) {
+                        viewModel.setCurrentPage(currentPage + 1)
+                    }
                 }
             }
         })

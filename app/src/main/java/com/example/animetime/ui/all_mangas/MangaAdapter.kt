@@ -5,13 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.widget.Filter
+import android.widget.Filterable
+import com.example.animetime.data.models.anime.Anime
 import com.example.animetime.data.models.manga.Manga
 import com.example.animetime.databinding.ItemMangaBinding
 
 class MangaAdapter(private val listener: MangaItemListener) :
-    RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
+    RecyclerView.Adapter<MangaAdapter.MangaViewHolder>(), Filterable {
 
     private val mangas = ArrayList<Manga>()
+    private var filteredMangas = ArrayList<Manga>()
 
     class MangaViewHolder(
         private val itemBinding: ItemMangaBinding,
@@ -58,6 +62,16 @@ class MangaAdapter(private val listener: MangaItemListener) :
             item.title_english != null &&
                     item.synopsis != null &&
                     item.images?.jpg?.image_url != null
+        }.filter { item ->
+            !item.title_english.isNullOrEmpty() &&
+                    !item.synopsis.isNullOrEmpty() &&
+                    item.images?.jpg?.image_url != null
+        })
+        this.filteredMangas.clear()
+        this.filteredMangas.addAll(mangas.filter { item ->
+            !item.title_english.isNullOrEmpty() &&
+                    !item.synopsis.isNullOrEmpty() &&
+                    item.images?.jpg?.image_url != null
         })
         notifyDataSetChanged()
     }
@@ -71,12 +85,43 @@ class MangaAdapter(private val listener: MangaItemListener) :
         return MangaViewHolder(binding, listener)
     }
 
-    override fun onBindViewHolder(holder: MangaViewHolder, position: Int) {
-        val item = mangas[position]
-        holder.bind(item)
+    override fun onBindViewHolder(holder: MangaAdapter.MangaViewHolder, position: Int) {
+        if (position < filteredMangas.size) {
+            holder.bind(filteredMangas[position])
+        } else {
+            holder.bind(mangas[position])
+        }
     }
 
     override fun getItemCount() = mangas.size
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterPattern = constraint.toString()
+                if (filterPattern.isEmpty()) {
+                    filteredMangas = ArrayList(mangas)
+                } else {
+                    val filterResultList = ArrayList<Manga>()
+                    for (manga in mangas) {
+                        if (manga.title_english?.lowercase()?.contains(filterPattern) == true
+                        ) {
+                            filterResultList.add(manga)
+                        }
+                    }
+                    filteredMangas = filterResultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = filteredMangas
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredMangas = results?.values as ArrayList<Manga>
+                notifyDataSetChanged()
+            }
+        }
+    }
 
     interface MangaItemListener {
         fun onMangaClick(mangaId: Int)
