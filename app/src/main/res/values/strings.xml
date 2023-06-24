@@ -12,7 +12,7 @@
     <string name="animes_button">Animes</string>
     <string name="mangas_button">Mangas</string>
     <string name="default_score">9.9</string>
-    <string name="number_of_volumes">Number Of Volumes</string>
+    <string name="number_of_volumes">Number Of Volumes:</string>
     <string name="ggggg" translatable="false">ggggg</string>
     <string name="remove_favorite_anime_title">Remove From Favorite Animes</string>
     <string name="remove_favorite_anime_text">Do you want to remove this Anime from your favorite Animes list?</string>
@@ -21,6 +21,8 @@
     <string name="released_year">Released Year:</string>
     <string name="_2017" translatable="false">2017</string>
     <string name="number_of_episodes">Number of Episodes:</string>
+    <string name="status">Status:</string>
+    <string name="ongoing">Ongoing...</string>
 
 
 </resources>

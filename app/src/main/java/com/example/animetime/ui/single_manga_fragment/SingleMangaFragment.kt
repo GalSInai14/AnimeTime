@@ -1,5 +1,6 @@
 package com.example.animetime.ui.single_manga_fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -82,11 +83,30 @@ class SingleMangaFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateMangaDetails(manga: Manga) {
+        val releaseYear = manga.published?.from
+        val maxLength = 4
+
+        if (releaseYear != null) {
+            if (releaseYear.length > maxLength) {
+                val trimmedReleaseYear = releaseYear.substring(0, maxLength)
+                binding.relYearMangaPage.text = trimmedReleaseYear
+            } else {
+                binding.relYearMangaPage.text = releaseYear
+            }
+        } else {
+            binding.relYearMangaPage.text = ""
+        }
+        if (manga.status.toString().equals("publishing", ignoreCase = true)) {
+            binding.epVolumesMangaPage.text = getString(R.string.ongoing)
+        } else {
+            binding.epVolumesMangaPage.text = manga.volumes.toString()
+        }
+
         binding.title.text = manga.title_english
-        binding.epVolumesMangaPage.text = manga.volumes.toString()
         binding.ratingManga.text = manga.score.toString()
-        binding.relYearMangaPage.text = manga.status.toString()
+        binding.statusMangaPage.text = manga.status.toString()
         binding.description.text = manga.synopsis
         Glide.with(requireContext()).load(manga.images?.jpg?.image_url).into(binding.photo)
     }
